@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+	</head>
+	<body>
+		<script>
+			
+			const obj = {
+				name: 'Oleg',
+				foo() {
+					console.log(this.name)
+				}
+			}
+
+			const someObj = {
+				firstName: 'Ivan',
+				secondName: 'Ivanov',
+				age: 40,
+				isAdmin: false
+			}
+
+			someObj.__proto__ = obj
+
+
+			const myMap = new Map();
+			myMap.set('firstNaae', 'Petya');
+			myMap.set('secondName', 'Petrov');
+			myMap.set('age', 44);
+			myMap.set('isAdmin', true);
+			
+
+
+
+			const getKeys = (object) => {
+				const arr = [];
+				for(let key in object) {
+					const isOwn = object.hasOwnProperty(key);
+					if(isOwn) {
+						arr.push(key)
+					}
+				}
+				return arr
+			}
+
+			const getValues = (object) => {
+				const arr = [];
+				for(let key in object) {
+					const isOwn = object.hasOwnProperty(key);
+					if(isOwn) {
+						arr.push(object[key])
+					}
+				}
+				return arr
+			}
+
+			const getEntries = (object) => {
+				const arr = [];
+				for(let key in object) {
+					const isOwn = object.hasOwnProperty(key);
+					if(isOwn) {
+						arr.push([key , object[key]])
+					}
+				}
+				return arr
+			}
+
+
+			console.log(getKeys(someObj))
+			console.log(getValues(someObj))
+			console.log(getEntries(someObj))
+
+
+			const getMapKeys = (object) => {
+				const arr = [];
+				for(let key of object) {
+					const isOwn = object instanceof Map;
+					if(isOwn) {
+						arr.push(key[0])
+					}
+				}
+				return arr
+			}
+
+			const getMapValues = (object) => {
+				const arr = [];
+				for(let key of object) {
+					const isOwn = object instanceof Map;
+					if(isOwn) {
+						arr.push(key[1])
+					}
+				}
+				return arr
+			}
+
+			const getMapEntries = (object) => {
+				const arr = [];
+				for(let key of object) {
+					const isOwn = object instanceof Map;
+					if(isOwn) {
+						arr.push(key)
+					}
+				}
+				return arr
+			}
+
+
+
+			console.log(getMapKeys(myMap))
+			console.log(getMapValues(myMap))
+			console.log(getMapEntries(myMap))
+
+		</script>
+	</body>
+</html>
